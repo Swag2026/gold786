@@ -179,8 +179,15 @@ html[dir="rtl"] .lfield-eye { right: auto; left: 12px; }
 /* ═══════════════════════════════════════════════
    APP SHELL
 ═══════════════════════════════════════════════ */
-#app { display: none; }
-#app.active { display: flex; }
+/* NOTE: the vanilla single-file app toggled a `.active` class on #app via
+   JS after login (its #app markup exists in the DOM from page load and
+   needs hiding before auth). React's Layout only ever MOUNTS #app once
+   the router confirms the user is authenticated — so #app should just
+   always be visible once it exists; no class toggle needed here. The old
+   `#app { display:none } / #app.active { display:flex }` pair was carried
+   over by mistake and left #app permanently hidden forever, since nothing
+   in the React code ever added that class — this was the root cause of
+   the "blank screen after login" bug on every deployment. */
 .shell { display: flex; min-height: 100vh; width: 100%; }
 
 /* ═══════════════════════════════════════════════
