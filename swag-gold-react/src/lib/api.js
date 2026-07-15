@@ -1,7 +1,6 @@
-// Central place for the backend URL. Set VITE_API_BASE in Netlify env vars
-// (Site settings → Environment variables) to point at your Railway backend,
-// e.g. https://erpgold-production.up.railway.app/api
-export const API_BASE = import.meta.env.VITE_API_BASE || 'https://erpgold-production.up.railway.app/api';
+// Central place for the backend URL. Set VITE_API_BASE in Netlify/Vercel env
+// vars (Environment Variables) to override this without touching code.
+export const API_BASE = import.meta.env.VITE_API_BASE || 'https://gear-revenue-anthropology-varieties.trycloudflare.com/api';
 
 function authHeaders(json = true) {
   const headers = {};
